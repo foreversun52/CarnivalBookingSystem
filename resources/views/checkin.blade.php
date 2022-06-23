@@ -7,24 +7,10 @@
     <script src="../js/jquery.min.js"></script>
     <!-- The latest version of Bootstrap core CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- The latest Bootstrap core JavaScript file -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <style>
-        .container {
-            padding: 30px;
-        }
-
-        .back-box{
-            width:500px;
-            height:300px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 50px 40px 50px 40px;
-            background-color: lightblue;
-            border-radius:20px;
-        }
-    </style>
 
     <title>Check in</title>
 
@@ -51,15 +37,14 @@
                     <a href="/dashboard">Reservation</a>
                 </li>
                 <li  class="active">
-                    <a href="/dashboard/checkin">Check in</a>
+                    <a href="/dashboard/check_in">Check in</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @php
-                    echo '<li> <a href="JavaScript:void(0)"> Today: Day'.$GLOBALS['configInfo']['CURRENT_DAY'].'</a> </li>';
-                @endphp
+                <li> <a href="#" style="cursor:default">The Carnival lasts for {{ $carnival_days }} days</a> </li>
+                <li> <a href="#"  style="cursor:default"> Today is The {{ $current_day }} day</a> </li>
                 <li>
-                    <a href="JavaScript:void(0)" style="cursor:default"> {{$cuName}} </a>
+                    <a href="JavaScript:void(0)" style="cursor:default">Login user: {{ $name }} </a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -77,19 +62,17 @@
                 <form method="POST" class="form-horizontal" action="/reservation/checkin">
                     @csrf
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">Invitation Code</div>
-                            <input type="text" class="form-control" name="ivtcd" placeholder="Input the 6-digit Invitation Code">
-                        </div>
+                        <label for="ivtcd">Invitation Code</label>
+                        <input type="text" id="ivtcd" class="form-control" name="ivtcd" placeholder="please enter your invitation code" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your Invitation Code with anyone else.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="please enter your password">
                     </div>
                     <div class="form-group">
-                        <div class="input-group">
-                            <div class="input-group-addon">Password</div>
-                            <input type="password" class="form-control" name="pwd" placeholder="Input your account password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" id="reserve" value="Check in" class="btn btn-primary">
+                        <input type="submit" id="reserve" value="Check In" class="btn btn-primary">
                     </div>
                 </form>
         </div>

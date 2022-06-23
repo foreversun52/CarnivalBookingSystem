@@ -7,26 +7,11 @@
     <script src="../js/jquery.min.js"></script>
     <!-- The latest version of Bootstrap core CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- The latest Bootstrap core JavaScript file -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <style>
-        .container {
-            padding: 30px;
-        }
-
-        .back-box{
-            width:300px;
-            height:300px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 50px 40px 50px 40px;
-            background-color: lightblue;
-            border-radius:20px;
-        }
-    </style>
-
-    <title>New Reservation</title>
+    <title>Add New Reservation</title>
 
 </head>
 <body class="antialiased">
@@ -55,11 +40,10 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                @php
-                    echo '<li> <a href="JavaScript:void(0)"> Today: Day'.$GLOBALS['configInfo']['CURRENT_DAY'].'</a> </li>';
-                @endphp
+                <li> <a href="#" style="cursor:default">The Carnival lasts for {{$carnival_days}} days</a> </li>
+                <li> <a href="#"  style="cursor:default"> Today is The {{$current_day}} day</a> </li>
                 <li>
-                    <a href="JavaScript:void(0)" style="cursor:default"> {{$cuName}} </a>
+                    <a href="JavaScript:void(0)" style="cursor:default">Login user: {{$name}} </a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -74,24 +58,26 @@
 <div class="container">
     <div class="container-fluid">
         <div class="back-box">
-            @if($cuTtRsv>=3)
+            @if($count>=3)
                 <h3>You have had 3 reservations, to reserve another day, you need to cancel an old one.</h3>
-            @elseif($ttDays==$cuDay)
+            @elseif($carnival_days==$current_day)
                 <h3>Today is the last day of the festival, please pay attention to the next event.</h3>
             @else
                 <form method="POST" class="form-horizontal" action="/reservation/add">
                 @csrf
                     <div class="form-group">
-                        <select name="rsv_day_at" class="form-control">
+                        <select name="rsv_day_at"  class="form-control" style="height: 45px;font-size: 20px">
                             @php
-                                for($i=$cuDay+1;$i<=$ttDays;$i++){
-                                 echo '<option value="'.$i.'" >Day'.$i.'</option>';
+                                for($i=$current_day+1;$i<=$carnival_days;$i++){
+                                $days = $i-$current_day." day";
+                                $date = date("Y-m-d",strtotime($days));
+                                 echo '<option value="'.$i.'" >'.$date.'</option>';
                                 }
                             @endphp
                         </select>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" id="reserve" value="Reserve" class="btn btn-primary">
+                    <div class="form-group" style="margin-top: 40px;">
+                        <input type="submit" id="reserve" value="Reserve" class="btn btn-lg btn-primary">
                     </div>
                 </form>
             @endif

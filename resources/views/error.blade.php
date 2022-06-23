@@ -7,31 +7,17 @@
     <script src="../js/jquery.min.js"></script>
     <!-- The latest version of Bootstrap core CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- The latest Bootstrap core JavaScript file -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <style>
-        .container {
-            padding: 30px;
-        }
-
-        .back-box{
-            width:300px;
-            height:300px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 50px 40px 50px 40px;
-            background-color: lightblue;
-            border-radius:20px;
-        }
-    </style>
 
     <title>Error</title>
 
 </head>
 <body class="antialiased">
 {{--    top navbar--}}
-<nav class="navbar navbar-default"
+<nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -47,11 +33,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="nav">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li>
                     <a href="/dashboard">Reservation</a>
                 </li>
                 <li>
-                    <a href="/dashboard/checkin">Check in</a>
+                    <a href="/dashboard/check_in">Check in</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/logout">Log out</a>
                 </li>
             </ul>
         </div>
