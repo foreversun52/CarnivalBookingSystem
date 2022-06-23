@@ -17,6 +17,11 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
+    'api' => [
+        'driver' => 'token',
+        'provider' => 'users',
+        'hash' => false,
+    ],
 
     /*
     |--------------------------------------------------------------------------
