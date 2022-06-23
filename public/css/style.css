@@ -1,0 +1,13 @@
+.container {
+    padding: 30px;
+}
+
+.back-box{
+    width:500px;
+    height:300px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px 40px 50px 40px;
+    background-color: #caecdb;
+    border-radius:20px;
+}
